@@ -36,15 +36,17 @@ export class AuthInterceptor implements HttpInterceptor {
                         if (event instanceof HttpResponse && event.status !== 200) {
                             return ErrorObservable.create(event);
                         }
-
-                        // 登录信息错误，清空登录信息，跳转登录页面
-                        if (event instanceof HttpResponse && event.status === 500) {
-                            this.router.navigate(['./login']);
+                        if (event instanceof HttpResponse && event.body.code == '401') {
+                            this.modal.warning({
+                                nzTitle: '登录信息过期，请重新登录。',
+                                nzOkText: '重新登录',
+                                nzOnOk: () => {
+                                    this.router.navigate(['./login']);
+                                }
+                            });
                         }
-
                         return new Observable<HttpEvent<any>>(observer => observer.next(event));
                     }),
-
                 );
             }
         } else {

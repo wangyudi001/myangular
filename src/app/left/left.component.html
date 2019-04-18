@@ -1,0 +1,63 @@
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+<div style="text-align: center">
+  <p>left pages</p>
+</div>
+<div>
+  <button (click)="add()" class="add" nz-button [nzType]="'primary'" [nzSize]="'large'">新增</button>
+  <button (click)="getData()" class="refresh" nz-button [nzType]="'primary'" [nzSize]="'large'">刷新</button>
+</div>
+<div class="userTable">
+  <nz-table #nzTable [nzData]="userList.data" [nzBordered]="true" [nzNoResult]="'暂无信息'" [nzShowPagination]="false">
+    <thead nz-thead>
+      <tr>
+        <th>index</th>
+        <th>username</th>
+        <th>password</th>
+        <th>email address</th>
+        <th>phone</th>
+        <th>operate</th>
+      </tr>
+    </thead>
+    <tbody nz-tbody>
+      <tr nz-tbody-tr *ngFor="let user of userList.data; let index=index;">
+        <td>{{index}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.userPassword}}</td>
+        <td>{{user.userEmail}}</td>
+        <td>{{user.phone}}</td>
+        <td>
+          <button (click)="upd(user)" nz-button [nzType]="'primary'" [nzSize]="'large'">修改</button>
+          <button (click)="del(user)" nz-button [nzType]="'danger'" [nzSize]="'large'">删除</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+<div class="edit_operate" *ngIf="IsEdit">
+  <nz-form-item style="margin-top: 30px;">
+    <nz-form-label [nzSpan]="6" nzFor="username">username</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input placeholder="please input username" [(ngModel)]="selectUser.username" nzSize="large" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="password">password</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input type="password" placeholder="please input password" [(ngModel)]="selectUser.password" nzSize="large" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="email">email</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input placeholder="please input email" [(ngModel)]="selectUser.email" nzSize="large" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="phone">phone</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input placeholder="please input phone" [(ngModel)]="selectUser.phone" nzSize="large" />
+    </nz-form-control>
+  </nz-form-item>
+  <button (click)="commit()" nz-button [nzType]="'primary'" [nzSize]="'large'">提交</button>
+  <button (click)="cancel()" nz-button [nzSize]="'large'">取消</button>
+</div>

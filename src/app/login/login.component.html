@@ -1,0 +1,21 @@
+<div style="text-align: center"><p >login pages</p></div>
+<div class="loginPage">
+  <div class="input">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="username">username</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input id="title" nz-input [(ngModel)]="loginInfo.username" [nzSize]="'large'" placeholder="please input your username" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="password">password</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input id="title" nz-input [(ngModel)]="loginInfo.password" [nzSize]="'large'" type="password" placeholder="please input your password" />
+      </nz-form-control>
+    </nz-form-item>
+    <div class="submitbtn">
+      <button (click)="login()" style="margin:0px 120px 0px 0px" nz-button [nzType]="'primary'" [nzSize]="'large'" [nzLoading]="isLoading">Login</button>
+      <button (click)="register()" nz-button [nzType]="'primary'" [nzSize]="'large'" [nzLoading]="isLoading">register</button>
+    </div>
+  </div>
+</div>

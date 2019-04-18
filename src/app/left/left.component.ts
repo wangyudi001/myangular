@@ -52,12 +52,21 @@ export class LeftComponent implements OnInit {
   getData() {
     this.userService.getAllUsers().subscribe(
       (result) => {
-        this.userList = {
-          code: result.code,
-          message: result.message,
-          data: result.data
-        };
-      },
+        if (result.code != '0') {
+          this.message.error(result.attr);
+          return;
+        } else {
+          this.userList = {
+            code: result.code,
+            message: result.message,
+            data: result.data
+          };
+        }
+
+      }, () => {
+        this.message.error('serve error!');
+        return;
+      }
     );
   }
 
@@ -109,7 +118,7 @@ export class LeftComponent implements OnInit {
       phone: this.selectUser.phone,
     };
 
-    if (this.selectUser.id != null && this.selectUser.id != '' ) {
+    if (this.selectUser.id != null && this.selectUser.id != '') {
       const urlOption = '/' + this.selectUser.id;
       this.userService.updUserById(urlOption, params).subscribe((data) => {
         if (data.code != '0') {

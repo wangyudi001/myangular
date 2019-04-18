@@ -1,5 +1,13 @@
 # MyAngularDemo
 
+自己的一个练习项目，实现一个Angular框架下一些基础的功能，该项目的后端API为仓库中的testSpringBoot项目。
+
+* 搭建基础的框架
+* 添加跨域访问
+* 通过HTTP请求接通后端API的访问
+* 实现最基础的登录，增删改查
+* 实现拦截器拦截请求并发送token
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
 
 ## Development server

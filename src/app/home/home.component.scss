@@ -1,0 +1,41 @@
+:host {
+  text-align: center;
+
+  .ant-layout-right {
+    margin-left: 240px;
+    min-width: 1200px;
+    overflow: auto;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+nz-header {
+  background: rgb(224, 226, 218);
+  padding: 0 0 0 200px;
+  position: fixed;
+  z-index: 9;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+  left: 0;
+  width: 100%;
+  text-align: right;
+}
+
+nz-sider {
+  background: #f7f9fa;
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  z-index: 10;
+}
+
+nz-content {
+  flex: 0;
+  margin: 88px 16px 24px;
+  margin-left: 240px;
+  overflow: initial;
+  padding: 20px;
+  text-align: center;
+}

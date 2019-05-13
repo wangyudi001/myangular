@@ -3,6 +3,7 @@ import { UserService } from './../services/user.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { registerNgModuleType } from '@angular/core/src/linker/ng_module_factory_loader';
 import { Router } from '@angular/router';
+import { CommonService } from '../services/common.services';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private message: NzMessageService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private comService: CommonService,
   ) { }
 
   ngOnInit() {
@@ -72,9 +74,10 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           return;
         } else {
-          const token = result.token;
+          const token = result.data.token;
           sessionStorage.setItem('token', JSON.stringify(token));
-          this.router.navigate(['./left']);
+          this.comService.setCookie('loginInfo', result.data.user, 1);
+          this.router.navigate(['./home']);
           this.isLoading = false;
         }
       }, () => {

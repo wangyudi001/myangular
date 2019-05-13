@@ -1,3 +1,4 @@
+import { UserComponent } from './../user/user.component';
 import { LoginRoutingModule } from './login.routing.module';
 
 import { NgModule } from '@angular/core';
@@ -6,15 +7,17 @@ import { FormsModule } from '@angular/forms';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { UserService } from '../services/user.service';
-import { RightComponent } from '../right/right.component';
+import { LoginComponent } from './login.component';
 
 
 @NgModule({
     declarations: [
-        RightComponent
+        LoginComponent,
+        UserComponent
     ],
     exports: [
-        RightComponent
+        LoginComponent,
+        UserComponent
     ],
     imports: [
         CommonModule,
@@ -23,10 +26,12 @@ import { RightComponent } from '../right/right.component';
         LoginRoutingModule,
     ],
     providers: [
-        UserService
+        UserService,
+        LoginComponent,
+        UserComponent
     ]
 })
 
-export class ClinicModule {
+export class LoginModule {
 
 }

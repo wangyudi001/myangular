@@ -52,7 +52,7 @@ export class LeftComponent implements OnInit {
   getData() {
     this.userService.getAllUsers().subscribe(
       (result) => {
-        if (result.code != '0') {
+        if (result.code !== '0') {
           this.message.error(result.attr);
           return;
         } else {
@@ -74,11 +74,11 @@ export class LeftComponent implements OnInit {
     const param = user.userId;
     this.userService.delUserById('?id=' + param).subscribe(
       (result) => {
-        if (result.code != '0') {
+        if (result.code !== '0') {
           this.message.error(result.attr);
           return;
         } else {
-          this.message.error('删除成功');
+          this.message.success('删除成功');
           this.getData();
         }
       }, () => {
@@ -118,10 +118,10 @@ export class LeftComponent implements OnInit {
       phone: this.selectUser.phone,
     };
 
-    if (this.selectUser.id != null && this.selectUser.id != '') {
+    if (this.selectUser.id != null && this.selectUser.id !== '') {
       const urlOption = '/' + this.selectUser.id;
       this.userService.updUserById(urlOption, params).subscribe((data) => {
-        if (data.code != '0') {
+        if (data.code !== '0') {
           this.IsEdit = false;
           this.message.error(data.message);
         } else {
@@ -135,9 +135,9 @@ export class LeftComponent implements OnInit {
       });
     } else {
       this.userService.addUser(params).subscribe((data) => {
-        if (data.code != '0') {
+        if (data.code !== '0') {
           this.IsEdit = false;
-          this.message.error(data.message);
+          this.message.error(data.attr);
         } else {
           this.message.success('新增成功');
           this.getData();

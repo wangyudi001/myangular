@@ -36,10 +36,10 @@ export class AuthInterceptor implements HttpInterceptor {
                         if (event instanceof HttpResponse && event.status !== 200) {
                             return ErrorObservable.create(event);
                         }
-                        if (event instanceof HttpResponse && event.body.code == '401') {
+                        if (event instanceof HttpResponse && event.body.code === '401') {
                             this.modal.warning({
-                                nzTitle: '登录信息过期，请重新登录。',
-                                nzOkText: '重新登录',
+                                nzTitle: 'Login information expire, please login again',
+                                nzOkText: 'To Login',
                                 nzOnOk: () => {
                                     this.router.navigate(['./login']);
                                 }

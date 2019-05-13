@@ -1,4 +1,3 @@
-.title {
-    text-align: center; 
-    font-size: 18px;
+:host {
+  height: 100%;
 }

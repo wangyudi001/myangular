@@ -123,7 +123,7 @@ export class LeftComponent implements OnInit {
       this.userService.updUserById(urlOption, params).subscribe((data) => {
         if (data.code !== '0') {
           this.IsEdit = false;
-          this.message.error(data.message);
+          this.message.error(data.attr);
         } else {
           this.message.success('修改成功');
           this.getData();
